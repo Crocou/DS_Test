@@ -36,13 +36,13 @@ class LinkedList:
 		if self.current is self.tail:
 			self.tail = self.before
 
-			# 중요 : current가 next가 아닌 before로 변경된다.
-			self.before.next = self.current.next
-			self.current = self.before 
+		# 중요 : current가 next가 아닌 before로 변경된다.
+		self.before.next = self.current.next
+		self.current = self.before 
 
-			self.num_of_data -= 1
+		self.num_of_data -= 1
 
-			return pop_data
+		return pop_data
 
 	# first 메소드 (search1 - 맨 앞의 노드 검색, before, current 변경)
 	def first(self):
@@ -101,3 +101,21 @@ class LinkedList:
 			self.tail = new_node
 
 		self.num_of_data += 1
+
+	# remove 메소드 구현
+	def remove(self, key):
+		self.before = self.head
+		self.current = self.head.next
+
+		found = False
+		while self.current != None:
+			if self.current.data == key:
+				found = True
+				self.delete()
+				print(f"{key} 값의 노드를 삭제합니다.")
+			else:
+				self.before = self.current
+				self.current = self.current.next
+
+		if not found:
+			print("해당하는 원소가 없습니다.")
