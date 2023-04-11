@@ -78,3 +78,26 @@ class LinkedList:
 			current = current.next
 		result += " -> null"
 		return result
+	
+	# insert_at 메소드 구현
+	def insert_at(self, position, new_data):
+		if position <= 0:
+			print("Error: position 값이 0 이하입니다.")
+			return
+
+		new_node = Node(new_data)
+
+		idx = 1
+		current = self.head
+
+		while idx < position and current.next != None:
+			current = current.next
+			idx += 1
+
+		new_node.next = current.next
+		current.next = new_node
+
+		if new_node.next == None:
+			self.tail = new_node
+
+		self.num_of_data += 1
