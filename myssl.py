@@ -1,3 +1,5 @@
+# 201901564/TESOL 영어학/박시온
+
 # Node 클래스 정의
 class Node:
 	def __init__(self, data):
@@ -66,3 +68,13 @@ class LinkedList:
 	# size 메소드
 	def size(self):
 		return self.num_of_data 
+
+	# traverse_all 메소드 구현
+	def traverse_all(self):
+		current = self.head.next
+		result = "head"
+		while current != None:
+			result += f" -> ({current.data})"
+			current = current.next
+		result += " -> null"
+		return result
